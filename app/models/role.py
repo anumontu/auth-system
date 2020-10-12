@@ -1,8 +1,10 @@
-from models.base import Base
-from models.user import User
+from app.models.base import Base
 
 
 class Role(Base):
+    """
+    Roles that be associated with a user
+    """
     roles: list = []
     current_id: int = 0
 
@@ -12,6 +14,11 @@ class Role(Base):
 
     @staticmethod
     def create(name: str):
+        """
+        Create role
+        :param name: role name
+        :return: Role object created
+        """
         role: Role = Role(name)
         Role.roles.append(role)
         return role

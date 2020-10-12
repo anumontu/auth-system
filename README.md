@@ -43,7 +43,7 @@ Initial Data
         * WRITE
         * DELETE
 
-1. Role
+1. Roles
 
         * Read User
         * Edit User
@@ -52,6 +52,6 @@ Initial Data
         * Read Pdf
         * Edit Pdf
 
-1. User Role
+1. User Roles
 
         * ananyaverma@gmail.com has Edit Image role

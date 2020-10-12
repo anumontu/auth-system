@@ -1,14 +1,20 @@
 from PyInquirer import prompt
 
-from models.user import User
-from models.user_role import UserRole
-from util.common import Log, input_style
+from app.models.user import User
+from app.models.user_role import UserRole
+from app.util.common import Log, input_style
 
 
 class RoleActions:
+    """
+    Role Actions for viewing, adding, removing roles for a particular user
+    """
 
     @staticmethod
-    def check_resource_access():
+    def view_roles():
+        """
+        Display the roles associated with current logged in user
+        """
         roles = UserRole.get_roles(User.logged_in_user)
         if not roles:
             Log.log('No roles associated', color='red')
@@ -18,6 +24,10 @@ class RoleActions:
 
     @staticmethod
     def add_role(user: User):
+        """
+        Assign a role to the given user
+        :param user: User object
+        """
         roles: list = UserRole.get_other_roles(user)
         if not roles:
             Log.log('No more roles available', color='red')
@@ -39,6 +49,10 @@ class RoleActions:
 
     @staticmethod
     def remove_role(user: User):
+        """
+        Remove a role associated with given user
+        :param user: User object
+        """
         user_roles: list = UserRole.get_user_roles(user)
         if not user_roles:
             Log.log('No roles assigned', color='red')
@@ -60,6 +74,9 @@ class RoleActions:
 
     @staticmethod
     def edit_role():
+        """
+        Edit(Add/Remove) user's role
+        """
         users: list = [user.email for user in User.get_users(is_admin=False)]
         if not users:
             Log.log('Users not found', color='red')

@@ -16,9 +16,19 @@ input_style = style_from_dict({
 
 
 class Log:
+    """
+    Utility for logging to command line
+    """
 
     @classmethod
     def log(cls, message: str, color: str, font: str = "slant", figlet: bool = False):
+        """
+        Method to display a message on command line
+        :param message: Message to be displayed
+        :param color: Color in which the message should be displayed
+        :param font: Font in which the message should be displayed
+        :param figlet: boolean to define if the message should be displayed as a banner
+        """
         if colored:
             if not figlet:
                 six.print_(colored(message, color))

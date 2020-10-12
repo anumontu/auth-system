@@ -1,13 +1,17 @@
-from models.user import User
-from util.common import input_style, Log
-from util.validator import EmailValidator, EmptyValidator
 from PyInquirer import prompt
+
+from app.models.user import User
+from app.util.common import input_style, Log
+from app.util.validator import EmailValidator, EmptyValidator
 
 
 class UserActions:
 
     @staticmethod
     def create_user():
+        """
+        Admin action to create a user
+        """
         create_user_questions: list = [
             {
                 'type': 'input',

@@ -1,13 +1,20 @@
-from models.user import User
-from util.common import input_style, Log
-from util.validator import EmailValidator, EmptyValidator
 from PyInquirer import prompt
+
+from app.models.user import User
+from app.util.common import input_style, Log
+from app.util.validator import EmailValidator, EmptyValidator
 
 
 class Auth:
+    """
+    Auth Actions for login and logout
+    """
 
     @staticmethod
     def login():
+        """
+        Logs in the user using email and password
+        """
         User.logged_in_user = None
         login_questions: list = [
             {
@@ -33,5 +40,8 @@ class Auth:
 
     @staticmethod
     def logout():
+        """
+        Logs out the current user
+        """
         User.logged_in_user = None
         Log.log('Logged out successfully', color='green')

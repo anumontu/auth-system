@@ -1,9 +1,13 @@
 import re
+
 from PyInquirer import Validator, ValidationError
 from prompt_toolkit.document import Document
 
 
 class EmailValidator(Validator):
+    """
+    Validate if input is a valid email
+    """
     pattern: str = r"\"?([-a-zA-Z0-9.`?{}]+@\w+\.\w+)\"?"
 
     def validate(self, email: Document):
@@ -21,6 +25,9 @@ class EmailValidator(Validator):
 
 
 class EmptyValidator(Validator):
+    """
+    Validate if input is not empty
+    """
 
     def validate(self, value: Document):
         if len(value.text):
